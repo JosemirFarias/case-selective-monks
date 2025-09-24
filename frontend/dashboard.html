@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+
+    <h2>Dashboard</h2>
+
+    <label for="filter-date">Filtrar por data:</label>
+    <input type="date" id="filter-date">
+
+    <table id="metricsTable">
+        <thead>
+            <tr>
+                <th data-column="account">Conta</th>
+                <th data-column="impressions">Impressões</th>
+                <th data-column="clicks">Cliques</th>
+                <th data-column="cost_micros">Custos</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- Dados da API vão aqui -->
+        </tbody>
+    </table>
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>
