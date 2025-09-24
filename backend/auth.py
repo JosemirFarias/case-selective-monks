@@ -5,6 +5,7 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 import bcrypt
 from datetime import datetime, timedelta, timezone
 from fastapi import HTTPException, Depends
+from data_loader import load_users
 
 
 SECRET_KEY = "test_secret_key"
@@ -14,12 +15,8 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 security = HTTPBearer()
 
 
-def load_users_df(path):
-    return pd.read_csv(path)
-
-
-def authenticate_user(users_df, email, password):
-    u = users_df[users_df["email"] == email]
+def authenticate_user(users, email, password):
+    u = users[users["email"] == email]
     if u.empty:
         return None
     u = u.iloc[0]
@@ -30,7 +27,7 @@ def authenticate_user(users_df, email, password):
     return None
 
 
-def create_access_token(data: dict, expires_delta: int = 30):
+def create_access_token(data: dict, expires_delta: int = ACCESS_TOKEN_EXPIRE_MINUTES):
     to_encode = data.copy()
     expire = datetime.now(timezone.utc) + timedelta(minutes=expires_delta)
     to_encode.update({"exp": expire})
@@ -42,7 +39,7 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(securit
     token = credentials.credentials
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        return payload
+        return {"email": payload.get("email"), "role": payload.get("role")}
     except jwt.ExpiredSignatureError:
         raise HTTPException(status_code=401, detail="Token expirado")
     except Exception:

@@ -12,10 +12,3 @@ def load_metrics(path="data/metrics.csv"):
     if "date" in df.columns:
         df["date"] = pd.to_datetime(df["date"])
     return df
-
-
-def load_metrics(path="data/metrics.csv"):
-    df = pd.read_csv(path)
-    if "date" in df.columns:
-        df["date"] = pd.to_datetime(df["date"])
-    return df

@@ -1,28 +1,21 @@
 
-import pandas as pd
-from fastapi import Depends, FastAPI, HTTPException, Request
+from fastapi import FastAPI
 from data_loader import load_users, load_metrics
-from fastapi.security import OAuth2PasswordRequestForm
-from auth import create_access_token, authenticate_user, get_current_user
-from datetime import datetime, timedelta
 
-app = FastAPI()
+from routes.login import router as login_router
+from routes.metrics import router as metrics_router
+from routes.user import router as users_router
+
+app = FastAPI(title="Case Estágio - Dashboard")
 
 # Executar "uvicorn main:app --reload" para iniciar o servidor.
 
 USERS_DF = load_users("../data/users.csv")
 METRICS_DF = load_metrics("../data/metrics.csv")
 
+app.state.USERS_DF = USERS_DF
+app.state.METRICS_DF = METRICS_DF
 
-@app.post("/login")
-async def login(form_data: OAuth2PasswordRequestForm = Depends()):
-    user = authenticate_user(USERS_DF, form_data.username, form_data.password)
-    if not user:
-        raise HTTPException(
-            status_code=401,
-            detail="Incorrect username or password",
-            headers={"WWW-Authenticate": "Bearer"},
-        )
-    token = create_access_token({"email": user["email"], "role": user["role"]}
-                                )
-    return {"access_token": token, "token_type": "bearer", "role": user["role"]}
+app.include_router(login_router, tags=["auth"])
+app.include_router(metrics_router, tags=["metrics"])
+app.include_router(users_router, tags=["users"])
