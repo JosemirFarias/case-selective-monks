@@ -20,7 +20,7 @@ def authenticate_user(users, email, password):
     if u.empty:
         return None
     u = u.iloc[0]
-    hashed = u["password_hash"]
+    hashed = u["password"]
 
     if bcrypt.checkpw(password.encode("utf-8"), hashed.encode("utf-8")):
         return {"email": u["email"], "role": u["role"], "name": u.get("name", "")}
