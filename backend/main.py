@@ -28,8 +28,8 @@ class MetricRequest(BaseModel):
     start_date: str = None
     end_date: str = None
     sort_by: str = None
-    sort_order: str = "asc"  # "asc" ou "desc"
-    role: str = "user"  # "admin" ou "user"
+    sort_order: str = "asc" 
+    role: str = "user"  
 
 
 def load_users():
@@ -46,7 +46,7 @@ def login(req: LoginRequest):
     user = users[(users['email'] == req.email) &
                  (users['password'] == req.password)]
     if not user.empty:
-        return {"sucess": True, "role": user.iloc[0]['role']}
+        return {"success": True, "role": user.iloc[0]['role']}
     raise HTTPException(status_code=401, detail="Usuário ou senha inválidos")
 
 

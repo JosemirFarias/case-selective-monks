@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Case Monks</title>
 
-    <link rel="stylesheet" href="style.css">
-
-</head>
-<body>
-
-    <h2>Login</h2>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <form id="loginForm">
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="password" id="password" placeholder="Senha" required>
-        <button type="submit">Entrar</button>
+      <h1>Login</h1>
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="Email"
+        class="form-input"
+        required
+      />
+
+      <label for="password" class="form-label">Senha</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Senha"
+        class="form-input"
+        required
+      />
+
+      <button type="submit" class="btn-submit">Entrar</button>
     </form>
 
-    <div id="metricsSection" style="display:none;">
-        <h2>Métricas</h2>
-        <label>Data Inicial: <input type="date" id="startDate"></label>
-        <label>Data Final: <input type="date" id="endDate"></label>
-        <button id="filterBtn">Filtrar</button>
-         <div id="tableContainer"></div>
+    <div id="metricsSection" style="display: none">
+      <h1>Métricas</h1>
+      <div class="search-container">
+        <label>Data Inicial: <input type="date" id="startDate" /></label>
+        <label>Data Final: <input type="date" id="endDate" /></label>
+        <button id="filterBtn" class="btn-filter">Filtrar</button>
+        <div id="tableContainer"></div>
+      </div>
     </div>
-    
+
     <script src="script.js"></script>
-    
-</body>
+  </body>
 </html>
