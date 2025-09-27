@@ -16,9 +16,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Executar "uvicorn main:app --reload" para iniciar o servidor.
-
-
 class LoginRequest(BaseModel):
     email: str
     password: str

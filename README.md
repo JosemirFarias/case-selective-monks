@@ -1,15 +1,33 @@
-# Case Selective Monks
+# 🏭 Case Selective Monks
 
-## Como executar
+## ▶️ Como executar
+
+1. Clone este repositório:
+   ```
+   git clone https://github.com/SEU_USUARIO/NOME_DO_REPOSITORIO.git
+   ```
 
 ### Backend
 
-1. Abra o terminal do Windows ou linux, acesse a pasta `backend`.
-2. Instale as dependências:
+1. Abra o terminal do Windows ou linux, acesse a pasta `backend` do projeto:
+2. Crie o ambiente virtual `.venv`:
+   ```
+   python3 -m venv .venv
+   ```
+3. Ative o ambiente:
+   - **Windows (PowerShell):**
+   ```
+   .venv\Scripts\activate
+   ```
+   - **Linux/macOS**
+   ```
+   source .venv/bin/activate
+   ```
+4. Instale as dependências:
    ```
    pip install -r requirements.txt
    ```
-3. Execute o backend:
+5. Execute o backend:
    ```
    uvicorn main:app --reload
    ```
@@ -24,9 +42,7 @@
 - `user1@test.com`, senha: `oeiruhn56146` (admin)
 - `user2@test.com`, senha: `908ijofff` (user)
 
-## Resumo das Funcionalidades e Ferramentas Utilizadas
-
-### Funcionalidades
+## 📌 Funcionalidades
 
 - **Login Seguro:** Acesso por email e senha, com autenticação baseada em usuários pré-cadastrados no arquivo CSV.
 - **Visualização de Métricas:** Exibição das métricas de performance em formato de tabela, facilitando a análise dos dados.
@@ -36,9 +52,9 @@
 - **Sem Cadastro de Usuários:** Utiliza apenas os usuários já existentes no arquivo CSV fornecido.
 - **Frontend Simples:** Interface web sem uso obrigatório de frameworks, com foco apenas na funcionalidade.
 
-### Ferramentas Utilizadas
+## 🛠️ Ferramentas Utilizadas
 
-- **Backend:** [FastAPI](https://fastapi.tiangolo.com/) (Python) — API responsável pela autenticação, leitura dos arquivos CSV e exposição dos dados para o frontend.
+- **Backend:** [FastAPI](https://fastapi.tiangolo.com/) (Python 3.13) — API responsável pela autenticação, leitura dos arquivos CSV e exposição dos dados para o frontend.
 - **Leitura de Arquivos:** [Pandas](https://pandas.pydata.org/) — Utilizado para leitura e manipulação dos arquivos de métricas e usuários em formato CSV.
 - **Servidor de Desenvolvimento:** [Uvicorn](https://www.uvicorn.org/) — Para rodar a aplicação FastAPI localmente.
 - **Frontend:** HTML, CSS e JavaScript puros, sem frameworks, garantindo fácil execução e entendimento do projeto.
