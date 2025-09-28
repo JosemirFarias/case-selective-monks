@@ -54,7 +54,7 @@
 
 ## 🛠️ Ferramentas Utilizadas
 
-- **Backend:** [FastAPI](https://fastapi.tiangolo.com/) (Python 3.13) — API responsável pela autenticação, leitura dos arquivos CSV e exposição dos dados para o frontend.
+- **Backend:** [FastAPI](https://fastapi.tiangolo.com/) (Python3) — API responsável pela autenticação, leitura dos arquivos CSV e exposição dos dados para o frontend.
 - **Leitura de Arquivos:** [Pandas](https://pandas.pydata.org/) — Utilizado para leitura e manipulação dos arquivos de métricas e usuários em formato CSV.
 - **Servidor de Desenvolvimento:** [Uvicorn](https://www.uvicorn.org/) — Para rodar a aplicação FastAPI localmente.
 - **Frontend:** HTML, CSS e JavaScript puros, sem frameworks, garantindo fácil execução e entendimento do projeto.
